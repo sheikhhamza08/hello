@@ -1,0 +1,45 @@
+<!-- Lab # 2 -->
+
+<!doctype html>
+<html>
+  <head>
+    <title>DOM Task</title>
+  </head>
+
+  <body>
+    <h3>Please enter your full name</h3>
+
+    <label for="textBox">Full Name:</label><br />
+
+    <input type="text" id="textBox" placeholder="Enter your full name" />
+
+    <br /><br />
+
+    <div id="showText"></div>
+
+    <script>
+      const input = document.getElementById("textBox");
+      const output = document.getElementById("showText");
+
+      function toTitleCase(text) {
+        return text
+          .toLowerCase()
+          .split(" ")
+          .filter((word) => word !== "")
+          .map((word) => word[0].toUpperCase() + word.slice(1))
+          .join(" ");
+      }
+
+      input.addEventListener("keyup", function () {
+        const value = input.value.trim();
+
+        if (value === "") {
+          output.innerHTML = "";
+        } else {
+          output.innerHTML =
+            "Your name is: <strong>" + toTitleCase(value) + "</strong>";
+        }
+      });
+    </script>
+  </body>
+</html>
