@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <title>DOM Numbers Task</title>
+  </head>
+
+  <body>
+    <h3>Enter two numbers (separated by space)</h3>
+
+    <input type="text" id="numbers" placeholder="e.g. 10 20" />
+
+    <p id="sum"></p>
+    <p id="avg"></p>
+    <p id="max"></p>
+    <p id="min"></p>
+
+    <script>
+      document.getElementById("numbers").addEventListener("input", function () {
+        const input = this.value;
+
+        const arr = input
+          .split(" ")
+          .map((num) => parseInt(num, 10))
+          .filter((num) => !isNaN(num));
+
+        if (arr.length === 0) return;
+
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+          sum += arr[i];
+        }
+
+        let avg = sum / arr.length;
+        let max = Math.max(...arr);
+        let min = Math.min(...arr);
+
+        document.getElementById("sum").innerText = "Sum: " + sum;
+        document.getElementById("avg").innerText = "Average: " + avg;
+        document.getElementById("max").innerText = "Maximum: " + max;
+        document.getElementById("min").innerText = "Minimum: " + min;
+      });
+    </script>
+  </body>
+</html>
