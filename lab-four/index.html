@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <title>DOM Numbers Task</title>
+  </head>
+
+  <body>
+    <h3>
+      Find the sum of all the natural numbers below 20 that are multiples of 3
+      or 5.
+    </h3>
+
+    <button onclick="calculate()">Calculate</button>
+
+    <p>Multiples of 3 or 5 below 20:</p>
+    <p id="multiples"></p>
+
+    <p><strong>Sum:</strong> <span id="sum"></span></p>
+
+    <script>
+      function calculate() {
+        const multiples = [];
+
+        for (let i = 1; i < 20; i++) {
+          if (i % 3 === 0 || i % 5 === 0) {
+            multiples.push(i);
+          }
+        }
+
+        const sum = multiples.reduce((a, b) => a + b, 0);
+
+        document.getElementById("multiples").innerText = multiples.join(", ");
+
+        document.getElementById("sum").innerText = sum;
+      }
+    </script>
+  </body>
+</html>
